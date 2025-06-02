@@ -4,6 +4,7 @@ const increaseTemp = () => {
     currentTemp++; 
     tempElement.innerHTML = currentTemp;
     setTempColor(currentTemp);
+    setLandscape(currentTemp);
 };
 
 const increaseButton = document.querySelector('#increaseTempControl');
@@ -15,11 +16,25 @@ const decreaseTemp = () => {
     currentTemp--; 
     tempElement.innerHTML = currentTemp;
     setTempColor(currentTemp);
+    setLandscape(currentTemp)
 };
 
 const decreaseButton = document.querySelector('#decreaseTempControl');
 decreaseButton.addEventListener('click', decreaseTemp);
 
+const setLandscape = (currentTemp) => {
+    landscapeElement = document.querySelector('#landscape');
+    
+    if (currentTemp >= 80) {
+        landscapeElement.innerHTML = '🌵__🐍_🦂_🌵🌵__🐍_🏜_🦂';
+    } else if (currentTemp >= 70) {
+        landscapeElement.innerHTML = '🌸🌿🌼__🌷🌻🌿_☘️🌱_🌻🌷';
+    } else if (currentTemp >= 60) {
+        landscapeElement.innerHTML = '🌾🌾_🍃_🪨__🛤_🌾🌾🌾_🍃';
+    } else {
+        landscapeElement.innerHTML = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
+    }
+}
 
 const setTempColor = (currentTemp) => {
     const tempElement = document.querySelector('#tempValue');
