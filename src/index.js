@@ -1,3 +1,5 @@
+const API_KEY = 'http://localhost:5000';
+
 const increaseTemp = () => {
     const tempElement = document.querySelector('#tempValue');
     let currentTemp = Number(tempElement.innerHTML);
@@ -50,16 +52,39 @@ const setTempColor = (currentTemp) => {
         tempElement.classList.add('green');
     } else {
         tempElement.classList.add('teal');
-
     }
-    }
+};
 
 const cityInput = (event) => {
     const cityHeader = document.querySelector('#headerCityName');
 
     cityHeader.innerHTML = event.target.value;
-}
+};
 
 const cityField = document.querySelector('#cityNameInput');
 
 cityField.addEventListener('change', cityInput);
+
+const setTempFromCity = async () => {
+    const cityElement = document.querySelector('#headerCityName');
+    const cityName = cityElement.innerHTML;
+
+    const cityLocationInfo = await axios.get(`${API_KEY}/location?q=${cityName}`);
+
+    const tempElement = document.querySelector('#tempValue');
+    const cityLat = cityLocationInfo.data[0].lat;
+    const cityLon = cityLocationInfo.data[0].lon;
+
+    const cityTempInfo = await axios.get(`${API_KEY}/weather?lat=${cityLat}&lon=${cityLon}`)
+    
+    const cityTempKelvin = cityTempInfo.data.main.temp;
+    const cityTempFaren = Math.round((cityTempKelvin * 1.8) - 459.67);
+
+    tempElement.innerHTML = cityTempFaren;
+
+    setTempColor(cityTempFaren);
+    setLandscape(cityTempFaren);
+};
+
+const getTempButton = document.querySelector('#currentTempButton');
+getTempButton.addEventListener('click', setTempFromCity)
