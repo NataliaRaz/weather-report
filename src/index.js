@@ -54,3 +54,12 @@ const setTempColor = (currentTemp) => {
     }
     }
 
+const cityInput = (event) => {
+    const cityHeader = document.querySelector('#headerCityName');
+
+    cityHeader.innerHTML = event.target.value;
+}
+
+const cityField = document.querySelector('#cityNameInput');
+
+cityField.addEventListener('change', cityInput);
