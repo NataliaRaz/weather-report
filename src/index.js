@@ -9,9 +9,6 @@ const increaseTemp = () => {
     setLandscape(currentTemp);
 };
 
-const increaseButton = document.querySelector('#increaseTempControl');
-increaseButton.addEventListener('click', increaseTemp);
-
 const decreaseTemp = () => {
     const tempElement = document.querySelector('#tempValue');
     let currentTemp = Number(tempElement.innerHTML);
@@ -20,9 +17,6 @@ const decreaseTemp = () => {
     setTempColor(currentTemp);
     setLandscape(currentTemp)
 };
-
-const decreaseButton = document.querySelector('#decreaseTempControl');
-decreaseButton.addEventListener('click', decreaseTemp);
 
 const setLandscape = (currentTemp) => {
     landscapeElement = document.querySelector('#landscape');
@@ -61,10 +55,6 @@ const cityInput = (event) => {
     cityHeader.innerHTML = event.target.value;
 };
 
-const cityField = document.querySelector('#cityNameInput');
-
-cityField.addEventListener('change', cityInput);
-
 const setTempFromCity = async () => {
     const cityElement = document.querySelector('#headerCityName');
     const cityName = cityElement.innerHTML;
@@ -86,17 +76,11 @@ const setTempFromCity = async () => {
     setLandscape(cityTempFaren);
 };
 
-const getTempButton = document.querySelector('#currentTempButton');
-getTempButton.addEventListener('click', setTempFromCity)
-
 const setSky = (event) => {
     const skyElement = document.querySelector('#sky');
     const skyOptions = ["☁️ ☁️ ☁️ ☀️ ☁️ ☁️", "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️", "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧", "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"]
     skyElement.innerHTML = skyOptions[event.target.value]
 }
-
-const skyElement = document.querySelector('#skySelect');
-skyElement.addEventListener("change", setSky)
 
 const resetCity = () => {
     const cityField = document.querySelector('#cityNameInput');
@@ -105,6 +89,21 @@ const resetCity = () => {
     const cityElement = document.querySelector('#headerCityName');
     cityElement.innerHTML = '';
 }
+
+const increaseButton = document.querySelector('#increaseTempControl');
+increaseButton.addEventListener('click', increaseTemp);
+
+const decreaseButton = document.querySelector('#decreaseTempControl');
+decreaseButton.addEventListener('click', decreaseTemp);
+
+const cityField = document.querySelector('#cityNameInput');
+cityField.addEventListener('change', cityInput);
+
+const getTempButton = document.querySelector('#currentTempButton');
+getTempButton.addEventListener('click', setTempFromCity)
+
+const skyElement = document.querySelector('#skySelect');
+skyElement.addEventListener("change", setSky)
 
 const cityReset = document.querySelector('#cityNameReset');
 cityReset.addEventListener('click', resetCity);
