@@ -30,7 +30,7 @@ const setLandscape = (currentTemp) => {
     } else {
         landscapeElement.innerHTML = '🌲🌲⛄️🌲⛄️🍂🌲🍁🌲🌲⛄️🍂🌲';
     }
-}
+};
 
 const setTempColor = (currentTemp) => {
     const tempElement = document.querySelector('#tempValue');
