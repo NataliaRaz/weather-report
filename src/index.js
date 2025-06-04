@@ -97,3 +97,14 @@ const setSky = (event) => {
 
 const skyElement = document.querySelector('#skySelect');
 skyElement.addEventListener("change", setSky)
+
+const resetCity = () => {
+    const cityField = document.querySelector('#cityNameInput');
+    cityField.value = '';
+
+    const cityElement = document.querySelector('#headerCityName');
+    cityElement.innerHTML = '';
+}
+
+const cityReset = document.querySelector('#cityNameReset');
+cityReset.addEventListener('click', resetCity);
