@@ -88,3 +88,12 @@ const setTempFromCity = async () => {
 
 const getTempButton = document.querySelector('#currentTempButton');
 getTempButton.addEventListener('click', setTempFromCity)
+
+const setSky = (event) => {
+    const skyElement = document.querySelector('#sky');
+    const skyOptions = ["☁️ ☁️ ☁️ ☀️ ☁️ ☁️", "☁️☁️ ☁️ ☁️☁️ ☁️ 🌤 ☁️ ☁️☁️", "🌧🌈⛈🌧🌧💧⛈🌧🌦🌧💧🌧🌧", "🌨❄️🌨🌨❄️❄️🌨❄️🌨❄️❄️🌨🌨"]
+    skyElement.innerHTML = skyOptions[event.target.value]
+}
+
+const skyElement = document.querySelector('#skySelect');
+skyElement.addEventListener("change", setSky)
